@@ -9,7 +9,7 @@ def connect_db(app):
   
 class Pet(db.Model):
     """ Pets for adoption """
-    __tableName__ = "pets"
+    __tablename__ = "pets"
 
     id = db.Column(
       db.Integer, 
