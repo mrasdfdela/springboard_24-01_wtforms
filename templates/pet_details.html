@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block title %}
+<h1>Say Hello to {{ pet.name }}</h1>
+{% endblock%}
+
+{% block content %}
+<p>This is {{ pet.name }}, the {{ pet.species }}.</p>
+{% if pet.age %}
+<p>Age: {{ pet.age }}</p>
+{% endif %}
+
+{% if pet.photo_url %}
+<img src='{{pet.photo_url}}' alt='pet picture' width='25%'>
+{% endif %}
+
+<form action="/{{ pet.id }}" method="POST">
+  {{ form.hidden_tag() }}
+  <div class='form-group'>
+    <p>Photo URL</p>
+    {{ form.photo_url(_class="form-control") }}
+  </div>
+  <div class='form-group'>
+    <p>Notes</p>
+    {{ form.notes(_class="form-control") }}
+  </div>
+  <div class='form-group'>
+    <p>Available: {{ form.available(_class="form-control") }}</p>
+  </div>
+  <a href='/' class='btn btn-outline-secondary'>Cancel</a>
+  <button type="submit" class="btn btn-primary">Update Pet</button>
+</form>
+{% endblock%}
