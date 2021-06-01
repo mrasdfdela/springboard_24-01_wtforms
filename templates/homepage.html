@@ -1,5 +1,7 @@
+{% extends 'base.html' %}
+
 {% block title %}
-<h1>Hello world!</h1>
+<h1>Pets</h1>
 {% endblock%}
 
 {% block content %}
@@ -7,7 +9,8 @@
   <p>{{pet.name}}</p>
   <img src='{{pet.photo_url}}' alt='pet picture' width='25%'>
   {% if pet.available %}
-    <p>Available</p>
+    <p><span class="badge badge-success">Available</span></p>
   {% endif %}
 {% endfor %}
+<a href='/add' class='btn btn-outline-primary'>Add a pet</a>
 {% endblock%}
